@@ -1,0 +1,41 @@
+meta {
+  name: Get User
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{graphQL}}
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  query GetUser(
+    $userId: Int!
+  ) {
+    getUser(
+      userId: $userId
+    ) {
+      id
+      username
+      password
+      role
+      majorId
+      studentId
+      semester
+      lastLogin
+      createTime
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "userId": 1
+  }
+}
+
+settings {
+  encodeUrl: true
+}

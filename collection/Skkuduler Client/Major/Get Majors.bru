@@ -1,0 +1,29 @@
+meta {
+  name: Get Majors
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{graphQL}}
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  query GetMajors {
+    getMajors {
+      id
+      college {
+        id
+        campus
+        collegeName
+      }
+      majorName
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,11 +1,18 @@
+'use client'
+
 import Image from "next/image";
 import styles from './login.module.css'
-import { DropdownInput, Input, f } from "./_components/Inputer";
-import { sign, SignButton } from "./_components/SignButton";
+import { Input, f } from "@components/Input"
+import { loginSubmit, SignButton } from "@components/SignButton";
+import { useState } from "react";
 
 const logoSize = 64
 
 export default function Home() {
+
+  const [studentId, studentIdSetter] = useState('');
+  const [password, passwordSetter] = useState('');
+
   return (
     <main>
       <h1 className={styles.title}>
@@ -16,27 +23,21 @@ export default function Home() {
       </h1>
       <div className={styles.inputs}>
         <Input
-          placeholder="Name"
+          placeholder="Student ID"
           type="text"
-          onChange={f}
-        />
-        <DropdownInput
-          placeholder="Major"
-          options={["S1", "S2"]}
+          value={studentId}
+          onChange={studentIdSetter}
         />
         <Input
-          placeholder="Student Number"
-          type="text"
-          onChange={f}
-        />
-        <DropdownInput
-          placeholder="Grade"
-          options={["S1", "S2"]}
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={passwordSetter}
         />
       </div>
       <SignButton
-        value="Sign Up / Login"
-        onClick={sign}
+        value="Login"
+        onClick={loginSubmit}
       />
       <Image
         className={styles.logo}

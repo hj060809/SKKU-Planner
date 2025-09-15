@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Skkuduler Admin",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

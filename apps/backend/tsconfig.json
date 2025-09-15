@@ -21,6 +21,13 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
-    "paths": {}
+    "paths": {
+      "@admin/*": ["./apps/admin/src/*"],
+      "@client/*": ["./apps/client/src/*"],
+      "@generated": ["./apps/@generated"],
+      "@libs/prisma": ["./libs/prisma/src/index.ts"],
+      "@libs/exceptions": ["./libs/exceptions/src/index.ts"],
+      "@libs/constants": ["./libs/constants/src/index.ts"]
+    }
   }
 }

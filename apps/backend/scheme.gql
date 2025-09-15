@@ -1,0 +1,195 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AdminCodeAvgAggregate {
+  id: Float
+}
+
+type AdminCodeCountAggregate {
+  _all: Int!
+  code: Int!
+  id: Int!
+  name: Int!
+}
+
+type AdminCodeMaxAggregate {
+  code: String
+  id: Int
+  name: String
+}
+
+type AdminCodeMinAggregate {
+  code: String
+  id: Int
+  name: String
+}
+
+type AdminCodeSumAggregate {
+  id: Int
+}
+
+enum Campus {
+  ALL
+  HSSC
+  NSC
+}
+
+type College {
+  Major: [Major!]
+  _count: CollegeCount!
+  campus: Campus!
+  collegeName: String!
+  id: ID!
+}
+
+type CollegeAvgAggregate {
+  id: Float
+}
+
+type CollegeCount {
+  Major: Int!
+}
+
+type CollegeCountAggregate {
+  _all: Int!
+  campus: Int!
+  collegeName: Int!
+  id: Int!
+}
+
+type CollegeMaxAggregate {
+  campus: Campus
+  collegeName: String
+  id: Int
+}
+
+type CollegeMinAggregate {
+  campus: Campus
+  collegeName: String
+  id: Int
+}
+
+type CollegeSumAggregate {
+  id: Int
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Major {
+  User: [User!]
+  _count: MajorCount!
+  college: College!
+  collegeId: Int!
+  id: ID!
+  majorName: String!
+}
+
+type MajorAvgAggregate {
+  collegeId: Float
+  id: Float
+}
+
+type MajorCount {
+  User: Int!
+}
+
+type MajorCountAggregate {
+  _all: Int!
+  collegeId: Int!
+  id: Int!
+  majorName: Int!
+}
+
+type MajorMaxAggregate {
+  collegeId: Int
+  id: Int
+  majorName: String
+}
+
+type MajorMinAggregate {
+  collegeId: Int
+  id: Int
+  majorName: String
+}
+
+type MajorSumAggregate {
+  collegeId: Int
+  id: Int
+}
+
+type Query {
+  getMajors: [Major!]!
+  getUser(userId: Int): User!
+  say: String!
+}
+
+enum Role {
+  Admin
+  User
+}
+
+type User {
+  createTime: DateTime!
+  id: ID!
+  lastLogin: DateTime
+  major: Major
+  majorId: Int
+  password: String!
+  role: Role!
+  semester: Int
+  studentId: String!
+  username: String!
+}
+
+type UserAvgAggregate {
+  id: Float
+  majorId: Float
+  semester: Float
+}
+
+type UserCountAggregate {
+  _all: Int!
+  createTime: Int!
+  id: Int!
+  lastLogin: Int!
+  majorId: Int!
+  password: Int!
+  role: Int!
+  semester: Int!
+  studentId: Int!
+  username: Int!
+}
+
+type UserMaxAggregate {
+  createTime: DateTime
+  id: Int
+  lastLogin: DateTime
+  majorId: Int
+  password: String
+  role: Role
+  semester: Int
+  studentId: String
+  username: String
+}
+
+type UserMinAggregate {
+  createTime: DateTime
+  id: Int
+  lastLogin: DateTime
+  majorId: Int
+  password: String
+  role: Role
+  semester: Int
+  studentId: String
+  username: String
+}
+
+type UserSumAggregate {
+  id: Int
+  majorId: Int
+  semester: Int
+}

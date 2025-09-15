@@ -1,17 +1,17 @@
-import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, HttpLink, ApolloLink } from '@apollo/client';
 
-const clientAPI = new ApolloClient({
-  link: new HttpLink({
-    uri: process.env.GRAPHQL_ENDPOINT,
-  }),
+const adminLink = new HttpLink({ uri: process.env.NEXT_PUBLIC_ADMIN_GRAPHQL_ENDPOINT });
+const clientLink = new HttpLink({ uri: process.env.NEXT_PUBLIC_CLIENT_GRAPHQL_ENDPOINT });
+
+const link = ApolloLink.split(
+  (operation) => operation.getContext().targetApi === 'admin',
+  adminLink,
+  clientLink
+);
+
+const client = new ApolloClient({
+  link,
   cache: new InMemoryCache(),
 });
 
-const adminAPI = new ApolloClient({
-  link: new HttpLink({
-    uri: process.env.GRAPHQL_ENDPOINT,
-  }),
-  cache: new InMemoryCache(),
-});
-
-export {adminAPI, clientAPI};
+export default client;

@@ -5,15 +5,27 @@ import { CourseModule } from './course/course.module';
 import { MajorModule } from './major/major.module';
 import { ScheduleModule } from './schedule/schedule.module';
 import { RegistrationModule } from './registration/registration.module';
-import { PrismaModule } from 'libs/prisma/prisma.module';
+import { PrismaModule } from '@libs/prisma';
+import { UserModule } from './user/user.module';
+import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
+import { GraphQLModule } from '@nestjs/graphql';
+import { apolloErrorFormatter } from '@libs/exceptions';
 
 @Module({
   imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: 'scheme.gql',
+      sortSchema: true,
+      introspection: true,
+      formatError: apolloErrorFormatter,
+    }),
+    PrismaModule,
     CourseModule,
     MajorModule,
     ScheduleModule,
     RegistrationModule,
-    PrismaModule,
+    UserModule,
   ],
   controllers: [ClientController],
   providers: [ClientService],

@@ -19,7 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@graphql/admin/*": ["./graphql/admin/*"],
+      "@graphql/clinet/*": ["./graphql/clinet/*"],
+      "@generated": ["./__generated__"],
+      "@generated/*": ["./__generated__/*"],
+      "@components/*": ["./components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

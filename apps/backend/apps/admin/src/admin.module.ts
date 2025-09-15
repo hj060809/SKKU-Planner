@@ -3,7 +3,7 @@ import { AdminController } from './admin.controller';
 import { AdminService } from './admin.service';
 import { CourseModule } from './course/course.module';
 import { MajorModule } from './major/major.module';
-import { PrismaModule } from 'libs/prisma/prisma.module';
+import { PrismaModule } from '@libs/prisma';
 
 @Module({
   imports: [CourseModule, MajorModule, PrismaModule],
