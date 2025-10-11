@@ -1,3 +1,7 @@
+import { SIGNUP } from "@/graphql/client/user/mutations"
+import { useMutation } from "@apollo/client/react"
+import { useRouter } from "next/navigation"
+
 interface SignButtonProps {
     value: string
     style?: string
@@ -5,15 +9,29 @@ interface SignButtonProps {
 }
 
 interface LoginSubmitForm {
-    name: string
+    studentId: string
+    password: string
 }
 
-export function loginSubmit() {
+interface SignUpSubmitForm extends LoginSubmitForm{
+    majorId: number
+    semester: number
+}
+
+export function loginSubmit({
+    studentId,
+    password,
+}: LoginSubmitForm) {
 
 }
 
-export function signUpSubmit() {
-
+export function SignUpSubmit({
+    studentId,
+    password,
+    majorId,
+    semester
+}: SignUpSubmitForm) {
+    
 }
 
 export function SignButton({

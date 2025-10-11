@@ -19,4 +19,25 @@ export class UserService {
 
     return user;
   }
+
+  async signUp({
+    studentId,
+    password,
+    majorId,
+    semester,
+  }: {
+    studentId: string;
+    password: string;
+    majorId: number;
+    semester: number;
+  }) {
+    return await this.prisma.user.create({
+      data: {
+        studentId,
+        password,
+        majorId,
+        semester,
+      },
+    });
+  }
 }

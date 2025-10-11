@@ -121,9 +121,13 @@ type MajorSumAggregate {
   id: Int
 }
 
+type Mutation {
+  signUp(majorId: Int!, password: String!, semester: Int!, studentId: String!): User!
+}
+
 type Query {
   getMajors: [Major!]!
-  getUser(userId: Int): User!
+  getUser(userId: Int!): User!
   say: String!
 }
 
@@ -142,7 +146,6 @@ type User {
   role: Role!
   semester: Int
   studentId: String!
-  username: String!
 }
 
 type UserAvgAggregate {
@@ -161,7 +164,6 @@ type UserCountAggregate {
   role: Int!
   semester: Int!
   studentId: Int!
-  username: Int!
 }
 
 type UserMaxAggregate {
@@ -173,7 +175,6 @@ type UserMaxAggregate {
   role: Role
   semester: Int
   studentId: String
-  username: String
 }
 
 type UserMinAggregate {
@@ -185,7 +186,6 @@ type UserMinAggregate {
   role: Role
   semester: Int
   studentId: String
-  username: String
 }
 
 type UserSumAggregate {

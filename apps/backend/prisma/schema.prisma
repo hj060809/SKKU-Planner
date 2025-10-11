@@ -53,12 +53,11 @@ model Major {
 
 model User {
   id            Int       @id @default(autoincrement())
-  username      String    @unique
   password      String
   role          Role      @default(User)
   major         Major?    @relation(fields: [majorId], references: [id], onDelete: Cascade)
   majorId       Int?      @map("major_id")
-  studentId     String    @default("0000000000") @map("student_id")
+  studentId     String    @default("0000000000") @map("student_id") @unique
   semester      Int?
   lastLogin     DateTime? @map("last_login")
   createTime    DateTime  @default(now()) @map("create_time")

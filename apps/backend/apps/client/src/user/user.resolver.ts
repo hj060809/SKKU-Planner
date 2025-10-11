@@ -1,4 +1,4 @@
-import { Resolver, Query, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int, Mutation } from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { User } from '@generated';
 
@@ -8,9 +8,28 @@ export class UserResolver {
 
   @Query(() => User)
   async getUser(
-    @Args('userId', { type: () => Int, nullable: true })
+    @Args('userId', { type: () => Int })
     userId: number,
   ) {
     return await this.userService.getUser(userId);
+  }
+
+  @Mutation(() => User)
+  async signUp(
+    @Args('studentId', { type: () => String })
+    studentId: string,
+    @Args('password', { type: () => String })
+    password: string,
+    @Args('majorId', { type: () => Int })
+    majorId: number,
+    @Args('semester', { type: () => Int })
+    semester: number,
+  ) {
+    return await this.userService.signUp({
+      studentId,
+      password,
+      majorId,
+      semester,
+    });
   }
 }

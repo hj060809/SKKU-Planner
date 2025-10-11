@@ -151,6 +151,19 @@ export type MajorSumAggregate = {
   id?: Maybe<Scalars['Int']['output']>;
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  signUp: User;
+};
+
+
+export type MutationSignUpArgs = {
+  majorId: Scalars['Int']['input'];
+  password: Scalars['String']['input'];
+  semester: Scalars['Int']['input'];
+  studentId: Scalars['String']['input'];
+};
+
 export type Query = {
   __typename?: 'Query';
   getMajors: Array<Major>;
@@ -160,7 +173,7 @@ export type Query = {
 
 
 export type QueryGetUserArgs = {
-  userId?: InputMaybe<Scalars['Int']['input']>;
+  userId: Scalars['Int']['input'];
 };
 
 export enum Role {
@@ -179,7 +192,6 @@ export type User = {
   role: Role;
   semester?: Maybe<Scalars['Int']['output']>;
   studentId: Scalars['String']['output'];
-  username: Scalars['String']['output'];
 };
 
 export type UserAvgAggregate = {
@@ -200,7 +212,6 @@ export type UserCountAggregate = {
   role: Scalars['Int']['output'];
   semester: Scalars['Int']['output'];
   studentId: Scalars['Int']['output'];
-  username: Scalars['Int']['output'];
 };
 
 export type UserMaxAggregate = {
@@ -213,7 +224,6 @@ export type UserMaxAggregate = {
   role?: Maybe<Role>;
   semester?: Maybe<Scalars['Int']['output']>;
   studentId?: Maybe<Scalars['String']['output']>;
-  username?: Maybe<Scalars['String']['output']>;
 };
 
 export type UserMinAggregate = {
@@ -226,7 +236,6 @@ export type UserMinAggregate = {
   role?: Maybe<Role>;
   semester?: Maybe<Scalars['Int']['output']>;
   studentId?: Maybe<Scalars['String']['output']>;
-  username?: Maybe<Scalars['String']['output']>;
 };
 
 export type UserSumAggregate = {
@@ -241,5 +250,16 @@ export type GetMajorsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetMajorsQuery = { __typename?: 'Query', getMajors: Array<{ __typename?: 'Major', id: string, majorName: string, college: { __typename?: 'College', id: string, campus: Campus, collegeName: string } }> };
 
+export type SignUpMutationVariables = Exact<{
+  studentId: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  majorId: Scalars['Int']['input'];
+  semester: Scalars['Int']['input'];
+}>;
+
+
+export type SignUpMutation = { __typename?: 'Mutation', signUp: { __typename?: 'User', studentId: string, password: string, majorId?: number | null, semester?: number | null, id: string, role: Role, lastLogin?: any | null, createTime: any } };
+
 
 export const GetMajorsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetMajors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getMajors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"majorName"}},{"kind":"Field","name":{"kind":"Name","value":"college"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"campus"}},{"kind":"Field","name":{"kind":"Name","value":"collegeName"}}]}}]}}]}}]} as unknown as DocumentNode<GetMajorsQuery, GetMajorsQueryVariables>;
+export const SignUpDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SignUp"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"studentId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"majorId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"semester"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signUp"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"studentId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"studentId"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}},{"kind":"Argument","name":{"kind":"Name","value":"majorId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"majorId"}}},{"kind":"Argument","name":{"kind":"Name","value":"semester"},"value":{"kind":"Variable","name":{"kind":"Name","value":"semester"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"studentId"}},{"kind":"Field","name":{"kind":"Name","value":"password"}},{"kind":"Field","name":{"kind":"Name","value":"majorId"}},{"kind":"Field","name":{"kind":"Name","value":"semester"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}},{"kind":"Field","name":{"kind":"Name","value":"createTime"}}]}}]}}]} as unknown as DocumentNode<SignUpMutation, SignUpMutationVariables>;

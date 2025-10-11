@@ -11,7 +11,6 @@ import { ID } from '@nestjs/graphql';
 
 export enum UserScalarFieldEnum {
     id = "id",
-    username = "username",
     password = "password",
     role = "role",
     majorId = "majorId",
@@ -2813,7 +2812,7 @@ export class DeleteManyUserArgs {
 export class DeleteOneUserArgs {
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
 }
 
 @ArgsType()
@@ -2824,7 +2823,7 @@ export class FindFirstUserOrThrowArgs {
     @Field(() => [UserOrderByWithRelationInput], {nullable:true})
     orderBy?: Array<UserOrderByWithRelationInput>;
     @Field(() => UserWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => Int, {nullable:true})
     take?: number;
     @Field(() => Int, {nullable:true})
@@ -2841,7 +2840,7 @@ export class FindFirstUserArgs {
     @Field(() => [UserOrderByWithRelationInput], {nullable:true})
     orderBy?: Array<UserOrderByWithRelationInput>;
     @Field(() => UserWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => Int, {nullable:true})
     take?: number;
     @Field(() => Int, {nullable:true})
@@ -2858,7 +2857,7 @@ export class FindManyUserArgs {
     @Field(() => [UserOrderByWithRelationInput], {nullable:true})
     orderBy?: Array<UserOrderByWithRelationInput>;
     @Field(() => UserWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => Int, {nullable:true})
     take?: number;
     @Field(() => Int, {nullable:true})
@@ -2871,14 +2870,14 @@ export class FindManyUserArgs {
 export class FindUniqueUserOrThrowArgs {
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
 }
 
 @ArgsType()
 export class FindUniqueUserArgs {
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
 }
 
 @ArgsType()
@@ -2900,14 +2899,14 @@ export class UpdateOneUserArgs {
     data!: InstanceType<typeof UserUpdateInput>;
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
 }
 
 @ArgsType()
 export class UpsertOneUserArgs {
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => UserCreateInput, {nullable:false})
     @Type(() => UserCreateInput)
     create!: InstanceType<typeof UserCreateInput>;
@@ -2924,7 +2923,7 @@ export class UserAggregateArgs {
     @Field(() => [UserOrderByWithRelationInput], {nullable:true})
     orderBy?: Array<UserOrderByWithRelationInput>;
     @Field(() => UserWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => Int, {nullable:true})
     take?: number;
     @Field(() => Int, {nullable:true})
@@ -2976,8 +2975,6 @@ export class UserCountAggregateInput {
     @Field(() => Boolean, {nullable:true})
     id?: true;
     @Field(() => Boolean, {nullable:true})
-    username?: true;
-    @Field(() => Boolean, {nullable:true})
     password?: true;
     @Field(() => Boolean, {nullable:true})
     role?: true;
@@ -3000,8 +2997,6 @@ export class UserCountAggregate {
     @Field(() => Int, {nullable:false})
     id!: number;
     @Field(() => Int, {nullable:false})
-    username!: number;
-    @Field(() => Int, {nullable:false})
     password!: number;
     @Field(() => Int, {nullable:false})
     role!: number;
@@ -3023,8 +3018,6 @@ export class UserCountAggregate {
 export class UserCountOrderByAggregateInput {
     @Field(() => SortOrder, {nullable:true})
     id?: `${SortOrder}`;
-    @Field(() => SortOrder, {nullable:true})
-    username?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
     password?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
@@ -3053,8 +3046,6 @@ export class UserCreateManyMajorInput {
     @Field(() => Int, {nullable:true})
     id?: number;
     @Field(() => String, {nullable:false})
-    username!: string;
-    @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {nullable:true})
     role?: `${Role}`;
@@ -3072,8 +3063,6 @@ export class UserCreateManyMajorInput {
 export class UserCreateManyInput {
     @Field(() => Int, {nullable:true})
     id?: number;
-    @Field(() => String, {nullable:false})
-    username!: string;
     @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {nullable:true})
@@ -3103,14 +3092,14 @@ export class UserCreateNestedManyWithoutMajorInput {
     createMany?: InstanceType<typeof UserCreateManyMajorInputEnvelope>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
 }
 
 @InputType()
 export class UserCreateOrConnectWithoutMajorInput {
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => UserCreateWithoutMajorInput, {nullable:false})
     @Type(() => UserCreateWithoutMajorInput)
     create!: InstanceType<typeof UserCreateWithoutMajorInput>;
@@ -3118,8 +3107,6 @@ export class UserCreateOrConnectWithoutMajorInput {
 
 @InputType()
 export class UserCreateWithoutMajorInput {
-    @Field(() => String, {nullable:false})
-    username!: string;
     @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {nullable:true})
@@ -3136,8 +3123,6 @@ export class UserCreateWithoutMajorInput {
 
 @InputType()
 export class UserCreateInput {
-    @Field(() => String, {nullable:false})
-    username!: string;
     @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {nullable:true})
@@ -3186,8 +3171,6 @@ export class UserGroupBy {
     @Field(() => Int, {nullable:false})
     id!: number;
     @Field(() => String, {nullable:false})
-    username!: string;
-    @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {nullable:false})
     role!: `${Role}`;
@@ -3228,8 +3211,6 @@ export class UserMaxAggregateInput {
     @Field(() => Boolean, {nullable:true})
     id?: true;
     @Field(() => Boolean, {nullable:true})
-    username?: true;
-    @Field(() => Boolean, {nullable:true})
     password?: true;
     @Field(() => Boolean, {nullable:true})
     role?: true;
@@ -3249,8 +3230,6 @@ export class UserMaxAggregateInput {
 export class UserMaxAggregate {
     @Field(() => Int, {nullable:true})
     id?: number;
-    @Field(() => String, {nullable:true})
-    username?: string;
     @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
@@ -3272,8 +3251,6 @@ export class UserMaxOrderByAggregateInput {
     @Field(() => SortOrder, {nullable:true})
     id?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
-    username?: `${SortOrder}`;
-    @Field(() => SortOrder, {nullable:true})
     password?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
     role?: `${SortOrder}`;
@@ -3293,8 +3270,6 @@ export class UserMaxOrderByAggregateInput {
 export class UserMinAggregateInput {
     @Field(() => Boolean, {nullable:true})
     id?: true;
-    @Field(() => Boolean, {nullable:true})
-    username?: true;
     @Field(() => Boolean, {nullable:true})
     password?: true;
     @Field(() => Boolean, {nullable:true})
@@ -3316,8 +3291,6 @@ export class UserMinAggregate {
     @Field(() => Int, {nullable:true})
     id?: number;
     @Field(() => String, {nullable:true})
-    username?: string;
-    @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
     role?: `${Role}`;
@@ -3337,8 +3310,6 @@ export class UserMinAggregate {
 export class UserMinOrderByAggregateInput {
     @Field(() => SortOrder, {nullable:true})
     id?: `${SortOrder}`;
-    @Field(() => SortOrder, {nullable:true})
-    username?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
     password?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
@@ -3365,8 +3336,6 @@ export class UserOrderByRelationAggregateInput {
 export class UserOrderByWithAggregationInput {
     @Field(() => SortOrder, {nullable:true})
     id?: `${SortOrder}`;
-    @Field(() => SortOrder, {nullable:true})
-    username?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
     password?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
@@ -3398,8 +3367,6 @@ export class UserOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     id?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
-    username?: `${SortOrder}`;
-    @Field(() => SortOrder, {nullable:true})
     password?: `${SortOrder}`;
     @Field(() => SortOrder, {nullable:true})
     role?: `${SortOrder}`;
@@ -3428,8 +3395,6 @@ export class UserScalarWhereWithAggregatesInput {
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     @Field(() => StringWithAggregatesFilter, {nullable:true})
-    username?: InstanceType<typeof StringWithAggregatesFilter>;
-    @Field(() => StringWithAggregatesFilter, {nullable:true})
     password?: InstanceType<typeof StringWithAggregatesFilter>;
     @Field(() => EnumRoleWithAggregatesFilter, {nullable:true})
     role?: InstanceType<typeof EnumRoleWithAggregatesFilter>;
@@ -3455,8 +3420,6 @@ export class UserScalarWhereInput {
     NOT?: Array<UserScalarWhereInput>;
     @Field(() => IntFilter, {nullable:true})
     id?: InstanceType<typeof IntFilter>;
-    @Field(() => StringFilter, {nullable:true})
-    username?: InstanceType<typeof StringFilter>;
     @Field(() => StringFilter, {nullable:true})
     password?: InstanceType<typeof StringFilter>;
     @Field(() => EnumRoleFilter, {nullable:true})
@@ -3516,15 +3479,13 @@ export class UserUncheckedCreateNestedManyWithoutMajorInput {
     createMany?: InstanceType<typeof UserCreateManyMajorInputEnvelope>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
 }
 
 @InputType()
 export class UserUncheckedCreateWithoutMajorInput {
     @Field(() => Int, {nullable:true})
     id?: number;
-    @Field(() => String, {nullable:false})
-    username!: string;
     @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {nullable:true})
@@ -3543,8 +3504,6 @@ export class UserUncheckedCreateWithoutMajorInput {
 export class UserUncheckedCreateInput {
     @Field(() => Int, {nullable:true})
     id?: number;
-    @Field(() => String, {nullable:false})
-    username!: string;
     @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {nullable:true})
@@ -3577,16 +3536,16 @@ export class UserUncheckedUpdateManyWithoutMajorNestedInput {
     createMany?: InstanceType<typeof UserCreateManyMajorInputEnvelope>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserUpdateWithWhereUniqueWithoutMajorInput], {nullable:true})
     @Type(() => UserUpdateWithWhereUniqueWithoutMajorInput)
     update?: Array<UserUpdateWithWhereUniqueWithoutMajorInput>;
@@ -3602,8 +3561,6 @@ export class UserUncheckedUpdateManyWithoutMajorNestedInput {
 export class UserUncheckedUpdateManyWithoutMajorInput {
     @Field(() => Int, {nullable:true})
     id?: number;
-    @Field(() => String, {nullable:true})
-    username?: string;
     @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
@@ -3622,8 +3579,6 @@ export class UserUncheckedUpdateManyWithoutMajorInput {
 export class UserUncheckedUpdateManyInput {
     @Field(() => Int, {nullable:true})
     id?: number;
-    @Field(() => String, {nullable:true})
-    username?: string;
     @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
@@ -3645,8 +3600,6 @@ export class UserUncheckedUpdateWithoutMajorInput {
     @Field(() => Int, {nullable:true})
     id?: number;
     @Field(() => String, {nullable:true})
-    username?: string;
-    @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
     role?: `${Role}`;
@@ -3665,8 +3618,6 @@ export class UserUncheckedUpdateInput {
     @Field(() => Int, {nullable:true})
     id?: number;
     @Field(() => String, {nullable:true})
-    username?: string;
-    @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
     role?: `${Role}`;
@@ -3684,8 +3635,6 @@ export class UserUncheckedUpdateInput {
 
 @InputType()
 export class UserUpdateManyMutationInput {
-    @Field(() => String, {nullable:true})
-    username?: string;
     @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
@@ -3726,16 +3675,16 @@ export class UserUpdateManyWithoutMajorNestedInput {
     createMany?: InstanceType<typeof UserCreateManyMajorInputEnvelope>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserWhereUniqueInput], {nullable:true})
     @Type(() => UserWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>>;
     @Field(() => [UserUpdateWithWhereUniqueWithoutMajorInput], {nullable:true})
     @Type(() => UserUpdateWithWhereUniqueWithoutMajorInput)
     update?: Array<UserUpdateWithWhereUniqueWithoutMajorInput>;
@@ -3751,7 +3700,7 @@ export class UserUpdateManyWithoutMajorNestedInput {
 export class UserUpdateWithWhereUniqueWithoutMajorInput {
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => UserUpdateWithoutMajorInput, {nullable:false})
     @Type(() => UserUpdateWithoutMajorInput)
     data!: InstanceType<typeof UserUpdateWithoutMajorInput>;
@@ -3759,8 +3708,6 @@ export class UserUpdateWithWhereUniqueWithoutMajorInput {
 
 @InputType()
 export class UserUpdateWithoutMajorInput {
-    @Field(() => String, {nullable:true})
-    username?: string;
     @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
@@ -3777,8 +3724,6 @@ export class UserUpdateWithoutMajorInput {
 
 @InputType()
 export class UserUpdateInput {
-    @Field(() => String, {nullable:true})
-    username?: string;
     @Field(() => String, {nullable:true})
     password?: string;
     @Field(() => Role, {nullable:true})
@@ -3799,7 +3744,7 @@ export class UserUpdateInput {
 export class UserUpsertWithWhereUniqueWithoutMajorInput {
     @Field(() => UserWhereUniqueInput, {nullable:false})
     @Type(() => UserWhereUniqueInput)
-    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'username'>;
+    where!: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'studentId'>;
     @Field(() => UserUpdateWithoutMajorInput, {nullable:false})
     @Type(() => UserUpdateWithoutMajorInput)
     update!: InstanceType<typeof UserUpdateWithoutMajorInput>;
@@ -3813,7 +3758,7 @@ export class UserWhereUniqueInput {
     @Field(() => Int, {nullable:true})
     id?: number;
     @Field(() => String, {nullable:true})
-    username?: string;
+    studentId?: string;
     @Field(() => [UserWhereInput], {nullable:true})
     AND?: Array<UserWhereInput>;
     @Field(() => [UserWhereInput], {nullable:true})
@@ -3826,8 +3771,6 @@ export class UserWhereUniqueInput {
     role?: InstanceType<typeof EnumRoleFilter>;
     @Field(() => IntNullableFilter, {nullable:true})
     majorId?: InstanceType<typeof IntNullableFilter>;
-    @Field(() => StringFilter, {nullable:true})
-    studentId?: InstanceType<typeof StringFilter>;
     @Field(() => IntNullableFilter, {nullable:true})
     semester?: InstanceType<typeof IntNullableFilter>;
     @Field(() => DateTimeNullableFilter, {nullable:true})
@@ -3848,8 +3791,6 @@ export class UserWhereInput {
     NOT?: Array<UserWhereInput>;
     @Field(() => IntFilter, {nullable:true})
     id?: InstanceType<typeof IntFilter>;
-    @Field(() => StringFilter, {nullable:true})
-    username?: InstanceType<typeof StringFilter>;
     @Field(() => StringFilter, {nullable:true})
     password?: InstanceType<typeof StringFilter>;
     @Field(() => EnumRoleFilter, {nullable:true})
@@ -3872,8 +3813,6 @@ export class UserWhereInput {
 export class User {
     @Field(() => ID, {nullable:false})
     id!: number;
-    @Field(() => String, {nullable:false})
-    username!: string;
     @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => Role, {defaultValue:'User',nullable:false})
