@@ -47,17 +47,13 @@ rm -f .env
 corepack enable
 COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install
 
-# Install lefthook for git hook
-pnpm exec lefthook install
-
 # Enable git auto completion
 if [ "$DEVCONTAINER" = "1" ] && ! grep -q "source /usr/share/bash-completion/completions/git" ~/.bashrc; then
   echo "source /usr/share/bash-completion/completions/git" >> ~/.bashrc
 fi
 
-# Apply database migration
 for _ in {1..5}; do
-  pnpm exec prisma migrate dev && break # break if migration succeed
+  pnpm --filter="backend" exec prisma migrate dev && break # break if migration succeed
   echo -e '\n⚠️ Failed to migrate. Waiting for db to be ready...\n'
   sleep 5
 done
