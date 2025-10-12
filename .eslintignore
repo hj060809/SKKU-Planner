@@ -1,0 +1,4 @@
+# ESLint will ignore the following files and directories
+node_modules
+dist
+jest.config.js
