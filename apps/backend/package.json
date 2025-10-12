@@ -13,11 +13,11 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/backend/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest --config jest.config.js",
-    "test:watch": "jest --config jest.config.js --watch",
-    "test:cov": "jest --config jest.config.js --coverage",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config jest.config.js"
+    "test:e2e": "jest"
   },
   "dependencies": {
     "@apollo/server": "^4.12.2",
@@ -77,9 +77,14 @@
     ],
     "coverageDirectory": "./coverage",
     "testEnvironment": "node",
-    "roots": [
-      "<rootDir>/apps/"
-    ]
+    "moduleNameMapper": {
+      "^@admin/(.*)$": "./apps/admin/src/$1",
+      "^@client/(.*)$": "./apps/client/src/$1",
+      "^@generated$": "./apps/@generated",
+      "^@libs/prisma$": "./libs/prisma/src/index.ts",
+      "^@libs/exceptions$": "./libs/exceptions/src/index.ts",
+      "^@libs/constants$": "./libs/constants/src/index.ts"
+    }
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
