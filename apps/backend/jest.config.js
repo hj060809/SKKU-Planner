@@ -9,15 +9,15 @@ module.exports = {
   coverageDirectory: './coverage',
   testEnvironment: 'node',
   moduleNameMapper: {
-    '^@admin/(.*)$': './apps/backend/apps/admin/src/$1',
-    '^@client/(.*)$': './apps/backend/apps/client/src/$1',
-    '^@generated$': './apps/backend/apps/@generated',
-    '^@libs/prisma$': './apps/backend/libs/prisma/src/index.ts',
-    '^@libs/exceptions$': './apps/backend/libs/exceptions/src/index.ts',
-    '^@libs/constants$': './apps/backend/libs/constants/src/index.ts'
+    '^@admin/(.*)$': './apps/admin/src/$1',
+    '^@client/(.*)$': './apps/client/src/$1',
+    '^@generated$': './apps/@generated',
+    '^@libs/prisma$': './libs/prisma/src/index.ts',
+    '^@libs/exceptions$': './libs/exceptions/src/index.ts',
+    '^@libs/constants$': './libs/constants/src/index.ts'
   },
   projects: [
-    './apps/backend/apps/admin',
-    './apps/backend/apps/client',
+    './apps/admin',
+    './apps/client',
   ],
 };
