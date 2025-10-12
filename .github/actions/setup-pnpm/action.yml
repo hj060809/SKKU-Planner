@@ -10,9 +10,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout repository
+    - name: Setup pnpm
       uses: pnpm/action-setup@v4
       with:
+        version: 9.4.0
         run_install: false
 
     - name: Setup Node.js and pnpm
