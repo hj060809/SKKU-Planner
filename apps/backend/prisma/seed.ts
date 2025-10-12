@@ -136,7 +136,6 @@ async function major() {
 async function user() {
   await prisma.user.create({
     data: {
-      username: 'admin',
       password: 'PASSWORD',
       role: Role.Admin,
       majorId: 1,
