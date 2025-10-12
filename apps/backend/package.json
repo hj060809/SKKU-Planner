@@ -11,7 +11,7 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/apps/backend/main",
+    "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -78,12 +78,12 @@
     "coverageDirectory": "./coverage",
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "^@admin/(.*)$": "./apps/backend/apps/admin/src/$1",
-      "^@client/(.*)$": "./apps/backend/apps/client/src/$1",
-      "^@generated$": "./apps/backend/apps/@generated",
-      "^@libs/prisma$": "./apps/backend/libs/prisma/src/index.ts",
-      "^@libs/exceptions$": "./apps/backend/libs/exceptions/src/index.ts",
-      "^@libs/constants$": "./apps/backend/libs/constants/src/index.ts"
+      "^@admin/(.*)$": "<rootDir>/apps/admin/src/$1",
+      "^@client/(.*)$": "<rootDir>/apps/client/src/$1",
+      "^@generated$": "<rootDir>/apps/@generated",
+      "^@libs/prisma$": "<rootDir>/libs/prisma/src/index.ts",
+      "^@libs/exceptions$": "<rootDir>/libs/exceptions/src/index.ts",
+      "^@libs/constants$": "<rootDir>/libs/constants/src/index.ts"
     }
   },
   "prisma": {
