@@ -9,15 +9,15 @@ module.exports = {
   coverageDirectory: './coverage',
   testEnvironment: 'node',
   moduleNameMapper: {
-    '^@admin/(.*)$': '<rootDir>/apps/backend/apps/admin/src/$1',
-    '^@client/(.*)$': '<rootDir>/apps/backend/apps/client/src/$1',
-    '^@generated$': '<rootDir>/apps/backend/apps/@generated',
-    '^@libs/prisma$': '<rootDir>/apps/backend/libs/prisma/src/index.ts',
-    '^@libs/exceptions$': '<rootDir>/apps/backend/libs/exceptions/src/index.ts',
-    '^@libs/constants$': '<rootDir>/apps/backend/libs/constants/src/index.ts'
+    '^@admin/(.*)$': './apps/backend/apps/admin/src/$1',
+    '^@client/(.*)$': './apps/backend/apps/client/src/$1',
+    '^@generated$': './apps/backend/apps/@generated',
+    '^@libs/prisma$': './apps/backend/libs/prisma/src/index.ts',
+    '^@libs/exceptions$': './apps/backend/libs/exceptions/src/index.ts',
+    '^@libs/constants$': './apps/backend/libs/constants/src/index.ts'
   },
   projects: [
-    '<rootDir>/apps/backend/apps/admin',
-    '<rootDir>/apps/backend/apps/client',
+    './apps/backend/apps/admin',
+    './apps/backend/apps/client',
   ],
 };

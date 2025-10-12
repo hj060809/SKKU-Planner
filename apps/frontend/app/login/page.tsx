@@ -37,7 +37,7 @@ export default function Home() {
       </div>
       <SignButton
         value="Login"
-        onClick={loginSubmit}
+        onClick={() => {}}
       />
       <Image
         className={styles.logo}
