@@ -1,0 +1,27 @@
+name: Setup pnpm
+description: 'Setup pnpm, Node.js and install dependencies'
+
+inputs:
+  install:
+    description: 'Install dependencies'
+    required: false
+    default: 'yes'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: pnpm/action-setup@v4
+      with:
+        run_install: false
+
+    - name: Setup Node.js and pnpm
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.18.0
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      if: ${{ inputs.install == 'yes' }}
+      shell: bash
+      run: pnpm install
