@@ -1,0 +1,34 @@
+{
+  "name": "skkuduler",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "runServices": [
+    "app"
+  ],
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "scripts/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "apollographql.vscode-apollo",
+        "bradlc.vscode-tailwindcss",
+        "bruno-api-client.bruno",
+        "csstools.postcss",
+        "dbaeumer.vscode-eslint",
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "prisma.prisma",
+        "mhutchie.git-graph"
+      ],
+      "settings": {
+        "extensions.verifySignature": false
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {}
+  },
+  // Connect as non-root user (https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user)
+  "remoteUser": "node"
+}

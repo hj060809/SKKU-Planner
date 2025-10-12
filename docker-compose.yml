@@ -1,0 +1,15 @@
+# NOTE: This docker-compose file is for local development environment only.
+
+services:
+  app:
+    profiles: ['devcontainer']
+    container_name: skkuduler-dev
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspace:cached
+    stdin_open: true
+    tty: true
+    environment:
+      DEVCONTAINER: '1'
