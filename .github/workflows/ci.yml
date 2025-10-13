@@ -101,6 +101,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      FRONTEND_URL: http://localhost:3000
       DATABASE_URL: file:./main.db
       ADMIN_PORT: 4001
       CLIENT_PORT: 4000
@@ -138,4 +139,3 @@ jobs:
       - name: Test
         if: steps.filter.outputs.backend == 'true'
         run: pnpm --filter="backend" test
-

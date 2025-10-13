@@ -4,9 +4,10 @@ import { AdminService } from './admin.service';
 import { CourseModule } from './course/course.module';
 import { MajorModule } from './major/major.module';
 import { PrismaModule } from '@libs/prisma';
+import { SharedConfigModule } from '@libs/config';
 
 @Module({
-  imports: [CourseModule, MajorModule, PrismaModule],
+  imports: [SharedConfigModule, CourseModule, MajorModule, PrismaModule],
   controllers: [AdminController],
   providers: [AdminService],
 })

@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -81,7 +81,7 @@ jobs:
             CONTAINER_NAME="Skkuduler-Backend-${{ matrix.target }}"
 
             echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
-            
+
             echo "Pulling latest image: $IMAGE_NAME"
             docker pull $IMAGE_NAME
 
@@ -92,4 +92,4 @@ jobs:
             fi
 
             echo "Starting new container: $CONTAINER_NAME"
-            docker run -d -p 127.0.0.1:${{ matrix.outer_port }}:${{ matrix.inner_port }} --name $CONTAINER_NAME $IMAGE_NAME
+            docker run -d -p 127.0.0.1:${{ matrix.outer_port }}:${{ matrix.inner_port }} -e NODE_ENV=production --name $CONTAINER_NAME $IMAGE_NAME
