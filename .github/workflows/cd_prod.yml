@@ -60,10 +60,12 @@ jobs:
         include:
           - env_name: admin
             target: admin
-            port: 4001
+            outer_port: 5001
+            inner_port: 4001
           - env_name: client
             target: client
-            port: 4000
+            outer_port: 5000
+            inner_port: 4000
 
     steps:
       - name: Connect to VM and Run Docker Commands
@@ -90,4 +92,4 @@ jobs:
             fi
 
             echo "Starting new container: $CONTAINER_NAME"
-            docker run -d -p 127.0.0.1:${{ matrix.port }}:${{ matrix.port }} --name $CONTAINER_NAME $IMAGE_NAME
+            docker run -d -p 127.0.0.1:${{ matrix.outer_port }}:${{ matrix.inner_port }} --name $CONTAINER_NAME $IMAGE_NAME
