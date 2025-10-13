@@ -76,7 +76,7 @@ jobs:
             set -e
 
             IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/skkuduler-backend-${{ matrix.target }}:latest"
-            CONTAINER_NAME="Skkuduler-Backend:${{ matrix.target }}"
+            CONTAINER_NAME="Skkuduler-Backend-${{ matrix.target }}"
 
             echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
             
