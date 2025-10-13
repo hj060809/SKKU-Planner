@@ -25,4 +25,5 @@ COPY --from=builder /build/out /app
 COPY ./apps/backend/entrypoint.sh /app
 WORKDIR /app
 
+RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
