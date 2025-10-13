@@ -50,7 +50,7 @@ jobs:
 
   deploy-backend:
     name: Deploy Backend
-    needs: [Build Backend]
+    needs: [build-backend]
     #if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
