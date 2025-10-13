@@ -16,7 +16,7 @@ COPY apps/frontend/package.json apps/frontend/
 RUN corepack enable && pnpm install --frozen-lockfile
 
 COPY apps/frontend apps/frontend
-COPY apps/backend/schema.gql apps/backend/
+COPY apps/backend/scheme.gql apps/backend/
 
 WORKDIR /build/apps/frontend
 
