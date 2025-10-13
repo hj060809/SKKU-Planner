@@ -162,6 +162,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
+          context: .
           file: ./apps/frontend/Dockerfile # build with root context
           push: true
           tags: ghcr.io/hj060809/skkuduler-frontend:${{ github.event.pull_request.head.sha || github.sha }}
