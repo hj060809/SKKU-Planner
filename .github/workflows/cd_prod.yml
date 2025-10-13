@@ -90,4 +90,4 @@ jobs:
             fi
 
             echo "Starting new container: $CONTAINER_NAME"
-            docker run -d -p 44:${{ matrix.port }} --name $CONTAINER_NAME $IMAGE_NAME
+            docker run -d -p 127.0.0.1:${{ matrix.port }}:${{ matrix.port }} --name $CONTAINER_NAME $IMAGE_NAME

@@ -1,5 +1,5 @@
-ARG ADMIN_GRAPHQL_ENDPOINT="https://skkuduler.duckdns.org/graphql"
-ARG CLIENT_GRAPHQL_ENDPOINT="https://skkuduler.duckdns.org/graphql"
+ARG ADMIN_GRAPHQL_ENDPOINT="http://localhost:4001/graphql"
+ARG CLIENT_GRAPHQL_ENDPOINT="http://localhost:4000/graphql"
 
 FROM node:22.18.0-alpine AS base
 
