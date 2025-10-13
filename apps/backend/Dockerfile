@@ -8,7 +8,7 @@ COPY . /build
 WORKDIR /build
 
 RUN npm install -g pnpm
-RUN pnpm --filter="backend" deploy out
+RUN pnpm --filter="backend" deploy out --legacy
 
 WORKDIR /build/out
 RUN npx prisma generate
