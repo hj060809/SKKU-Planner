@@ -40,6 +40,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
+          platforms: linux/arm64
           file: ./apps/backend/Dockerfile # build with root context
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/skkuduler-backend-${{ matrix.target }}:latest #${{ github.event.workflow_run.head_sha }}
@@ -56,7 +57,13 @@ jobs:
 
     strategy:
       matrix:
-        target: [admin, client] # 'admin'과 'client' 작업을 생성
+        include:
+          - env_name: admin
+            target: admin
+            port: 4001
+          - env_name: client
+            target: client
+            port: 4000
 
     steps:
       - name: Connect to VM and Run Docker Commands
@@ -66,6 +73,8 @@ jobs:
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
+            set -e
+
             IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/skkuduler-backend-${{ matrix.target }}:latest"
             CONTAINER_NAME="Skkuduler-Backend:${{ matrix.target }}"
 
@@ -81,4 +90,4 @@ jobs:
             fi
 
             echo "Starting new container: $CONTAINER_NAME"
-            docker run -d -p 80:3000 --name $CONTAINER_NAME $IMAGE_NAME
+            docker run -d -p 44:${{ matrix.port }} --name $CONTAINER_NAME $IMAGE_NAME
