@@ -10,11 +10,9 @@ import { UserModule } from './user/user.module';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { apolloErrorFormatter } from '@libs/exceptions';
-import { SharedConfigModule } from '@libs/config';
 
 @Module({
   imports: [
-    SharedConfigModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'scheme.gql',
