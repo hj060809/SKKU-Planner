@@ -40,14 +40,12 @@ RUN adduser --system --uid 1001 nextjs
 RUN mkdir -p apps/frontend/.next
 RUN chown nextjs:nodejs apps/frontend/.next
 
-COPY --from=build --chown=nextjs:nodejs /build/apps/frontend/.next/standalone ./
 COPY --from=build --chown=nextjs:nodejs /build/apps/frontend/.next/static ./apps/frontend/.next/static
 COPY --from=build --chown=nextjs:nodejs /build/apps/frontend/public ./apps/frontend/public
 
 USER nextjs
 
 ENV NODE_ENV=production
-ENV PORT=5525
 
 ARG ADMIN_GRAPHQL_ENDPOINT
 ARG CLIENT_GRAPHQL_ENDPOINT
