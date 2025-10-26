@@ -102,7 +102,7 @@ jobs:
 
     env:
       FRONTEND_URL: http://localhost:3000
-      DATABASE_URL: file:./main.db
+      DATABASE_URL: postgresql://postgres.vdpujselxfgsjoeosxvu:r-skkuduler%23%24~fjw@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres
       ADMIN_PORT: 4001
       CLIENT_PORT: 4000
 
@@ -139,7 +139,7 @@ jobs:
       - name: Test
         if: steps.filter.outputs.backend == 'true'
         run: pnpm --filter="backend" test
-        
+
   build-frontend:
     name: Build Frontend
     runs-on: ubuntu-latest

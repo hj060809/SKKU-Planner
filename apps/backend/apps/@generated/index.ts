@@ -21,6 +21,9 @@ export enum UserScalarFieldEnum {
 }
 
 export enum TransactionIsolationLevel {
+    ReadUncommitted = "ReadUncommitted",
+    ReadCommitted = "ReadCommitted",
+    RepeatableRead = "RepeatableRead",
     Serializable = "Serializable"
 }
 
@@ -32,6 +35,11 @@ export enum SortOrder {
 export enum Role {
     User = "User",
     Admin = "Admin"
+}
+
+export enum QueryMode {
+    'default' = "default",
+    insensitive = "insensitive"
 }
 
 export enum NullsOrder {
@@ -68,6 +76,7 @@ registerEnumType(CollegeScalarFieldEnum, { name: 'CollegeScalarFieldEnum', descr
 registerEnumType(MajorScalarFieldEnum, { name: 'MajorScalarFieldEnum', description: undefined })
 registerEnumType(Campus, { name: 'Campus', description: undefined })
 registerEnumType(NullsOrder, { name: 'NullsOrder', description: undefined })
+registerEnumType(QueryMode, { name: 'QueryMode', description: undefined })
 registerEnumType(Role, { name: 'Role', description: undefined })
 registerEnumType(SortOrder, { name: 'SortOrder', description: undefined })
 registerEnumType(TransactionIsolationLevel, { name: 'TransactionIsolationLevel', description: undefined })
@@ -446,6 +455,8 @@ export class CreateManyAdminCodeArgs {
     @Field(() => [AdminCodeCreateManyInput], {nullable:false})
     @Type(() => AdminCodeCreateManyInput)
     data!: Array<AdminCodeCreateManyInput>;
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }
 
 @ArgsType()
@@ -1077,6 +1088,8 @@ export class CreateManyCollegeArgs {
     @Field(() => [CollegeCreateManyInput], {nullable:false})
     @Type(() => CollegeCreateManyInput)
     data!: Array<CollegeCreateManyInput>;
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }
 
 @ArgsType()
@@ -1221,6 +1234,8 @@ export class CreateManyMajorArgs {
     @Field(() => [MajorCreateManyInput], {nullable:false})
     @Type(() => MajorCreateManyInput)
     data!: Array<MajorCreateManyInput>;
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }
 
 @ArgsType()
@@ -1405,6 +1420,8 @@ export class MajorCreateManyCollegeInputEnvelope {
     @Field(() => [MajorCreateManyCollegeInput], {nullable:false})
     @Type(() => MajorCreateManyCollegeInput)
     data!: Array<MajorCreateManyCollegeInput>;
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }
 
 @InputType()
@@ -2735,6 +2752,8 @@ export class StringFilter {
     startsWith?: string;
     @Field(() => String, {nullable:true})
     endsWith?: string;
+    @Field(() => QueryMode, {nullable:true})
+    mode?: `${QueryMode}`;
     @Field(() => NestedStringFilter, {nullable:true})
     not?: InstanceType<typeof NestedStringFilter>;
 }
@@ -2761,6 +2780,8 @@ export class StringWithAggregatesFilter {
     startsWith?: string;
     @Field(() => String, {nullable:true})
     endsWith?: string;
+    @Field(() => QueryMode, {nullable:true})
+    mode?: `${QueryMode}`;
     @Field(() => NestedStringWithAggregatesFilter, {nullable:true})
     not?: InstanceType<typeof NestedStringWithAggregatesFilter>;
     @Field(() => NestedIntFilter, {nullable:true})
@@ -2790,6 +2811,8 @@ export class CreateManyUserArgs {
     @Field(() => [UserCreateManyInput], {nullable:false})
     @Type(() => UserCreateManyInput)
     data!: Array<UserCreateManyInput>;
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }
 
 @ArgsType()
@@ -3039,6 +3062,8 @@ export class UserCreateManyMajorInputEnvelope {
     @Field(() => [UserCreateManyMajorInput], {nullable:false})
     @Type(() => UserCreateManyMajorInput)
     data!: Array<UserCreateManyMajorInput>;
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
 }
 
 @InputType()
