@@ -122,6 +122,7 @@ type MajorSumAggregate {
 }
 
 type Mutation {
+  login(password: String!, studentId: String!): User!
   signUp(majorId: Int!, password: String!, semester: Int!, studentId: String!): User!
 }
 

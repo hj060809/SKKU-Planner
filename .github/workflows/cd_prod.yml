@@ -155,4 +155,4 @@ jobs:
             fi
 
             echo "Starting new container: $CONTAINER_NAME"
-            docker run -d -p 127.0.0.1:${{ matrix.outer_port }}:${{ matrix.inner_port }} -e NODE_ENV=production -e FRONTEND_URL=${{ secrets.FRONTEND_URL }} -e DATABASE_URL=${{ secrets.DATABASE_URL }} -e ADMIN_PORT=${{ secrets.ADMIN_PORT }} -e CLIENT_PORT=${{ secrets.CLIENT_PORT }} --name $CONTAINER_NAME --restart always $IMAGE_NAME
+            docker run -d -p 127.0.0.1:${{ matrix.outer_port }}:${{ matrix.inner_port }} -e NODE_ENV=production -e FRONTEND_URL=${{ secrets.FRONTEND_URL }} -e PEPPER=${{ secrets.PEPPER }} -e DATABASE_URL=${{ secrets.DATABASE_URL }} -e ADMIN_PORT=${{ secrets.ADMIN_PORT }} -e CLIENT_PORT=${{ secrets.CLIENT_PORT }} --name $CONTAINER_NAME --restart always $IMAGE_NAME

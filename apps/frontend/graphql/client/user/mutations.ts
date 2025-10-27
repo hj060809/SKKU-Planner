@@ -25,6 +25,28 @@ const SIGNUP = gql(`
     }
 `)
 
+const LOGIN = gql(`
+    mutation Login (
+        $studentId: String!
+        $password: String!
+    ) {
+        login(
+            studentId: $studentId
+            password: $password
+        ) {
+            studentId
+            password
+            majorId
+            semester
+            id
+            role
+            lastLogin
+            createTime
+        }
+    }
+`)
+
 export {
-    SIGNUP
+    SIGNUP,
+    LOGIN
 }

@@ -32,4 +32,17 @@ export class UserResolver {
       semester,
     });
   }
+
+  @Mutation(() => User)
+  async login(
+    @Args('studentId', { type: () => String })
+    studentId: string,
+    @Args('password', { type: () => String })
+    password: string,
+  ) {
+    return await this.userService.login({
+      studentId,
+      password,
+    });
+  }
 }
