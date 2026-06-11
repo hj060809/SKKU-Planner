@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import { SIGNUP } from "@/graphql/client/user/mutations"
 import { useMutation } from "@apollo/client/react"
 import { useRouter } from "next/navigation"
