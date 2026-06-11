@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic';
+
 import Image from "next/image";
 import styles from './login.module.css'
 import { Input, f } from "@components/Input"

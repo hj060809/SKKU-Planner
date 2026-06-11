@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic';
+
 import Image from "next/image";
 import styles from './signUp.module.css'
 import { DropdownInput } from "./_components/DropdownInput"
@@ -33,7 +35,7 @@ export default function Home() {
   const [password, passwordSetter] = useState('');
 
   const router = useRouter()
-      
+
   const [signUp] = useMutation(SIGNUP, {
       context: {
           targetApi: 'client'
