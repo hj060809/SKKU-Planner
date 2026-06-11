@@ -102,7 +102,8 @@ jobs:
 
     env:
       FRONTEND_URL: http://localhost:3000
-      DATABASE_URL: postgresql://postgres.vdpujselxfgsjoeosxvu:r-skkuduler%23%24~fjw@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres
+      DATABASE_URL: "postgresql://postgres.aiawynghgjfcjejinrkr:RuOXAmSf4CX0IV99@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+      DIRECT_URL: "postgresql://postgres.aiawynghgjfcjejinrkr:RuOXAmSf4CX0IV99@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres"
       ADMIN_PORT: 4001
       CLIENT_PORT: 4000
 
@@ -127,7 +128,7 @@ jobs:
           pnpm --filter="backend" exec prisma migrate diff \
             --from-migrations ./prisma/migrations \
             --to-schema-datamodel ./prisma/schema.prisma \
-            --shadow-database-url ${{ env.DATABASE_URL }} \
+            --shadow-database-url ${{ env.DIRECT_URL }} \
             --exit-code ||
           (echo "::error::Prisma migration is not up to date." \
           "Please run 'pnpm prisma migrate dev' locally and commit the changes." && exit 1)
