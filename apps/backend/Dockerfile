@@ -12,7 +12,7 @@ RUN pnpm --filter="backend" deploy out --legacy
 
 WORKDIR /build/out
 RUN npx prisma generate
-RUN npm run build ${TARGET} || echo "Next.js Build failed, but continuing..."
+RUN npm run build ${TARGET}
 
 ### STAGE 2: Production ###
 FROM node:22.18.0-alpine
