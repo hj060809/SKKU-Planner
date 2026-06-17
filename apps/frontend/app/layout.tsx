@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// @ts-ignore
+// @ts-expect-error
 import "./globals.css";
 import { ClientApolloProvider } from "@/components/ApolloProvider";
 
