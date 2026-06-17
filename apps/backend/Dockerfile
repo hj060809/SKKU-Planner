@@ -8,7 +8,7 @@ COPY . /build
 WORKDIR /build
 
 RUN npm install -g pnpm
-RUN pnpm --filter="backend" deploy out
+RUN pnpm --filter="backend" deploy out --legacy
 
 WORKDIR /build/out
 RUN npx prisma generate
@@ -25,4 +25,5 @@ COPY --from=builder /build/out /app
 COPY ./apps/backend/entrypoint.sh /app
 WORKDIR /app
 
+RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

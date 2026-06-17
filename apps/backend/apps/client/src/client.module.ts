@@ -1,15 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ClientController } from './client.controller';
 import { ClientService } from './client.service';
-import { CourseModule } from './course/course.module';
-import { MajorModule } from './major/major.module';
-import { ScheduleModule } from './schedule/schedule.module';
-import { RegistrationModule } from './registration/registration.module';
 import { PrismaModule } from '@libs/prisma';
-import { UserModule } from './user/user.module';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { apolloErrorFormatter } from '@libs/exceptions';
+import { ClientResolver } from './client.resolver';
 
 @Module({
   imports: [
@@ -21,13 +17,8 @@ import { apolloErrorFormatter } from '@libs/exceptions';
       formatError: apolloErrorFormatter,
     }),
     PrismaModule,
-    CourseModule,
-    MajorModule,
-    ScheduleModule,
-    RegistrationModule,
-    UserModule,
   ],
   controllers: [ClientController],
-  providers: [ClientService],
+  providers: [ClientResolver, ClientService],
 })
 export class ClientModule {}

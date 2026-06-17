@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# This script sets up the development environment for Skkuduer.
 # Should support both local machine(MacOS/Linux) and devcontainer.
 
 set -e
@@ -59,5 +58,5 @@ for _ in {1..5}; do
 done
 
 echo ""
-echo "✅ Skkuduler setup has been completed!"
+echo "✅ Project setup has been completed!"
 echo ""

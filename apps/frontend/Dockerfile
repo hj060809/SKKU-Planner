@@ -1,5 +1,5 @@
-ARG ADMIN_GRAPHQL_ENDPOINT="https://skkuduler.duckdns.org/graphql"
-ARG CLIENT_GRAPHQL_ENDPOINT="https://skkuduler.duckdns.org/graphql"
+ARG ADMIN_GRAPHQL_ENDPOINT="https://skkuduler.duckdns.org:4001/graphql"
+ARG CLIENT_GRAPHQL_ENDPOINT="https://skkuduler.duckdns.org:4000/graphql"
 
 FROM node:22.18.0-alpine AS base
 
@@ -47,7 +47,6 @@ COPY --from=build --chown=nextjs:nodejs /build/apps/frontend/public ./apps/front
 USER nextjs
 
 ENV NODE_ENV=production
-ENV PORT=5525
 
 ARG ADMIN_GRAPHQL_ENDPOINT
 ARG CLIENT_GRAPHQL_ENDPOINT
@@ -55,4 +54,4 @@ ARG CLIENT_GRAPHQL_ENDPOINT
 ENV NEXT_PUBLIC_ADMIN_GRAPHQL_ENDPOINT=${ADMIN_GRAPHQL_ENDPOINT}
 ENV NEXT_PUBLIC_CLIENT_GRAPHQL_ENDPOINT=${CLIENT_GRAPHQL_ENDPOINT}
 
-CMD ["node", "apps/frontend/server.js"]
+CMD ["node", "/app/apps/frontend/server.js"]

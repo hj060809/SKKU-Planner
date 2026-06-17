@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SKKUDULER",
-  description: "Automatically generates the course registration list.",
+  title: "Service",
+  description: "New Service.",
 };
 
 export default function RootLayout({

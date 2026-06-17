@@ -13,53 +13,12 @@ generator graphql {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-}
-
-model AdminCode {
-  id    Int     @id @default(autoincrement())
-  code  String  @unique
-  name  String
-}
-
-enum Role {
-  User
-  Admin
-}
-
-enum Campus{
-  ALL
-  NSC
-  HSSC
-}
-
-model College {
-  id            Int       @id @default(autoincrement())
-  campus        Campus
-  collegeName   String    @map("college_name")
-  @@map("college")
-  Major Major[]
-}
-
-model Major {
-  id              Int       @id @default(autoincrement())
-  college         College   @relation(fields: [collegeId], references: [id], onDelete: Cascade)
-  collegeId       Int       @map("college_id")
-  majorName       String    @map("major_name")
-  @@map("major")
-  User User[]
+  provider = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  password      String
-  role          Role      @default(User)
-  major         Major?    @relation(fields: [majorId], references: [id], onDelete: Cascade)
-  majorId       Int?      @map("major_id")
-  studentId     String    @default("0000000000") @map("student_id") @unique
-  semester      Int?
-  lastLogin     DateTime? @map("last_login")
-  createTime    DateTime  @default(now()) @map("create_time")
-  @@map("user")
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
 }
