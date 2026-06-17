@@ -59,6 +59,9 @@ importers:
       graphql:
         specifier: ^16.11.0
         version: 16.11.0
+      identity-type:
+        specifier: ^1.0.0
+        version: 1.0.0
       prisma-nestjs-graphql:
         specifier: ^23.2.1
         version: 23.2.1(@prisma/generator-helper@6.17.1)(identity-type@1.0.0)
