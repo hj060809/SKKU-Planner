@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -19,3 +20,11 @@ export type Query = {
   __typename?: 'Query';
   ping: Scalars['String']['output'];
 };
+
+export type GetPingQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPingQuery = { __typename?: 'Query', ping: string };
+
+
+export const GetPingDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPing"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ping"}}]}}]} as unknown as DocumentNode<GetPingQuery, GetPingQueryVariables>;
