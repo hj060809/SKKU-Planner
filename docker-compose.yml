@@ -3,7 +3,7 @@
 services:
   app:
     profiles: ['devcontainer']
-    container_name: skkuduler-dev
+    container_name: new-service-dev
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile

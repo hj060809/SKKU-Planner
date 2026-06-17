@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+// @ts-ignore
 import "./globals.css";
 import { ClientApolloProvider } from "@/components/ApolloProvider";
-import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SKKUDULER",
-  description: "Automatically generates the course registration list.",
+  title: "Service",
+  description: "New Service.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,6 @@ export default function RootLayout({
         <body
           className={`${inter.className} antialiased`}
         >
-          <Navbar/>
           {children}
         </body>
       </html>

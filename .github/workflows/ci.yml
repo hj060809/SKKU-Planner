@@ -170,7 +170,7 @@ jobs:
           context: .
           file: ./apps/frontend/Dockerfile # build with root context
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/skkuduler-frontend:latest #${{ github.event.pull_request.head.sha || github.sha }}
+          tags: ghcr.io/${{ github.repository_owner }}/service-frontend:latest #${{ github.event.pull_request.head.sha || github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |

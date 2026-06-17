@@ -1,5 +1,5 @@
 {
-  "name": "skkuduler",
+  "name": "new_service",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "app",
   "runServices": [
